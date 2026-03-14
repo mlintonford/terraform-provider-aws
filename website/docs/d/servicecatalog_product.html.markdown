@@ -22,14 +22,25 @@ data "aws_servicecatalog_product" "example" {
 }
 ```
 
+### Lookup by Name and Portfolio Name
+
+```terraform
+data "aws_servicecatalog_product" "example" {
+  name           = "example-product"
+  portfolio_name = "example-portfolio"
+}
+```
+
 ## Argument Reference
 
-The following arguments are required:
+Exactly one of the following arguments is required:
 
-* `id` - (Required) ID of the product.
+* `id` - (Optional) ID of the product.
+* `name` - (Optional) Name of the product. Must be set together with `portfolio_name`.
 
 The following arguments are optional:
 
+* `portfolio_name` - (Optional) Name of the portfolio containing the product. Must be set together with `name`.
 * `region` - (Optional) Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 * `accept_language` - (Optional) Language code. Valid values are `en` (English), `jp` (Japanese), `zh` (Chinese). The default value is `en`.
 
